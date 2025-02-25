@@ -1,22 +1,45 @@
-<h1>Meu Primeiro Card com Angular Material</h1>
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>Título do Card</mat-card-title>
-    <mat-card-subtitle>Subtítulo do Card</mat-card-subtitle>
-  </mat-card-header>
-  <img
-    mat-card-image
-    src="https://via.placeholder.com/400x200"
-    alt="Imagem de exemplo"
-  />
-  <mat-card-content>
-    <p>
-      Este é um exemplo de card usando Angular Material. O Angular Material é
-      uma biblioteca de componentes que segue as diretrizes do Material Design.
-    </p>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-button color="warn">Curtir</button>
-    <button mat-button>Compartilhar</button>
-  </mat-card-actions>
-</mat-card>
+<mat-toolbar>
+  <button mat-icon-button class="example-icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Like You</span>
+</mat-toolbar>
+
+<div class="content">
+  <mat-card *ngFor="let item of pessoas; index as i">
+    <mat-card-header>
+      <mat-card-title>{{ item.titulo }}</mat-card-title>
+      <mat-card-subtitle>{{ item.subtitulo }}</mat-card-subtitle>
+    </mat-card-header>
+    <img
+      mat-card-image
+      src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fbr.freepik.com%2Ffotos%2Fpessoas&psig=AOvVaw0Sf0UW4FbIg1kLl3k4IyUc&ust=1740533104938000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCOjsmZ3V3YsDFQAAAAAdAAAAABAE"
+      alt="Imagem de exemplo"
+    />
+    <mat-card-content>
+      <p>
+        {{ item.paragrafo }}
+      </p>
+      <h1>{{ item.curtidas }} Curtidas</h1>
+      <h2>{{ item.favorite }} Favorites</h2>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button
+        mat-button
+        color="warn"
+        (click)="item.curtidas = item.curtidas + 1"
+      >
+        Curtir
+      </button>
+      <button mat-button>Compartilhar</button>
+      <button
+        mat-icon-button
+        color="primary"
+        (click)="item.favorite = item.favorite + 1"
+      >
+        <mat-icon>favorite_border</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
